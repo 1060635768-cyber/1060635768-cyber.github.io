@@ -1,453 +1,585 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Yulia.yan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Studio — Hi, I'm Yulia!</title>
+<meta name="description" content="Stunning design. Blazing performance. Built by AI, refined by experts." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ============ BASE ============ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#000;color:#fff;font-family:'Barlow',system-ui,-apple-system,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,p{margin:0}
 
-  :root {
-    --bg: #fbf9f6;
-    --ink: #1c1b19;
-    --body: #3c3a37;
-    --muted: #7d7770;
-    --accent: #c9603f;
-    --line: #e9e3da;
-    --card: #ffffff;
-  }
+/* ============ LIQUID GLASS ============ */
+.lg{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  position:relative;
+  overflow:hidden;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.12);
+}
+.lg::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;padding:1.4px;
+  background:linear-gradient(180deg,rgba(255,255,255,.45) 0%,rgba(255,255,255,.15) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,.15) 80%,rgba(255,255,255,.45) 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask-composite:exclude;
+  pointer-events:none;z-index:0;
+}
+.lg>*{position:relative;z-index:1}
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-      "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    line-height: 1.75;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+.lg-strong{
+  background:rgba(255,255,255,.07);
+  backdrop-filter:blur(50px);
+  -webkit-backdrop-filter:blur(50px);
+  position:relative;
+  overflow:hidden;
+  box-shadow:4px 4px 4px rgba(0,0,0,.05),inset 0 1px 1px rgba(255,255,255,.18);
+}
+.lg-strong::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;padding:1.4px;
+  background:linear-gradient(180deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.2) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,.2) 80%,rgba(255,255,255,.5) 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask-composite:exclude;
+  pointer-events:none;z-index:0;
+}
+.lg-strong>*{position:relative;z-index:1}
 
-  /* ---------- 导航 ---------- */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: rgba(251, 249, 246, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--line);
-  }
+/* ============ BUTTONS ============ */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:9999px;font-size:.875rem;font-weight:500;font-family:'Barlow',sans-serif;transition:transform .3s ease;white-space:nowrap}
+.btn:hover{transform:scale(1.03)}
+.btn:active{transform:scale(.99)}
+.btn-white{background:#fff;color:#000}
+.btn-glass{color:#fff}
+.btn-sm{padding:.625rem 1.25rem}
 
-  .nav {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 15px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
+/* ============ TYPOGRAPHY ============ */
+.font-heading{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400}
+.section-badge{display:inline-flex;align-items:center;padding:.25rem .875rem;border-radius:9999px;font-size:.75rem;font-weight:500;color:#fff}
+.section-title{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;color:#fff;letter-spacing:-.02em;line-height:.9;margin-top:1.5rem;font-size:clamp(2.25rem,5vw,3.75rem)}
+.section-sub{color:rgba(255,255,255,.6);font-weight:300;font-size:.9375rem;line-height:1.5}
 
-  .logo {
-    font-weight: 700;
-    font-size: 17px;
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-  }
-  .logo span { color: var(--accent); }
+/* ============ LAYOUT ============ */
+.container{width:100%;max-width:72rem;margin:0 auto;padding:0 1.5rem}
+.section{position:relative;overflow:hidden;background:#000}
+.section-inner{max-width:72rem;margin:0 auto;padding:6rem 1.5rem}
+@media(min-width:768px){.section-inner{padding:8rem 1.5rem}}
+.section-head{text-align:center;margin-bottom:4rem}
+@media(min-width:768px){.section-head{margin-bottom:6rem}}
 
-  .tabs {
-    display: flex;
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .tabs::-webkit-scrollbar { display: none; }
+/* ============ NAV ============ */
+.nav{position:fixed;top:1rem;left:0;right:0;z-index:50;padding:.75rem 2rem}
+@media(min-width:1024px){.nav{padding:.75rem 4rem}}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{width:3rem;height:3rem;border-radius:9999px;display:grid;place-items:center;flex-shrink:0}
+.nav-links{display:none;align-items:center;border-radius:9999px;padding:.375rem}
+@media(min-width:768px){.nav-links{display:flex}}
+.nav-link{padding:.5rem .75rem;font-size:.875rem;font-weight:500;color:rgba(255,255,255,.9);transition:color .2s}
+.nav-link:hover{color:#fff}
+.nav-spacer{width:3rem;height:3rem;display:none}
+@media(min-width:768px){.nav-spacer{display:block}}
+.nav-cta-mobile{display:flex}
+@media(min-width:768px){.nav-cta-mobile{display:none}}
+.nav-cta-desktop{display:none;align-items:center;gap:.25rem;margin-left:.25rem;background:#fff;color:#000;border-radius:9999px;padding:.375rem .875rem;font-size:.875rem;font-weight:500;transition:transform .3s}
+.nav-cta-desktop:hover{transform:scale(1.04)}
+@media(min-width:768px){.nav-cta-desktop{display:inline-flex}}
 
-  .tab {
-    border: 0;
-    background: transparent;
-    font: inherit;
-    font-size: 14px;
-    color: var(--muted);
-    padding: 7px 14px;
-    border-radius: 999px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: color 0.2s, background 0.2s;
-  }
-  .tab:hover { color: var(--ink); }
-  .tab.active { background: var(--ink); color: #fff; }
-  .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* ============ HERO ============ */
+.hero{position:relative;height:1000px;overflow:hidden;background:#000}
+@media(max-width:768px){.hero{height:860px}}
+.hero-video{position:absolute;top:20%;left:0;width:100%;height:auto;object-fit:contain;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.35);z-index:0;pointer-events:none}
+.hero-fade{position:absolute;bottom:0;left:0;right:0;height:300px;background:linear-gradient(to bottom,transparent,#000);z-index:0;pointer-events:none}
+.hero-content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;padding:150px 1.5rem 0}
+@media(max-width:768px){.hero-content{padding-top:120px}}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.25rem;border-radius:9999px}
+.hero-badge .new{background:#fff;color:#000;border-radius:9999px;padding:.25rem .75rem;font-size:.75rem;font-weight:600;font-family:'Barlow',sans-serif}
+.hero-badge .txt{color:rgba(255,255,255,.85);font-size:.75rem;padding-right:.5rem;font-family:'Barlow',sans-serif}
+.hero-title{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;color:#fff;font-size:clamp(2.75rem,7vw,5.5rem);line-height:.8;letter-spacing:-.04em;max-width:42rem;margin-top:1.75rem}
+.hero-sub{margin-top:1.75rem;max-width:36rem;color:#fff;font-weight:300;font-size:.875rem;line-height:1.35;font-family:'Barlow',sans-serif}
+@media(min-width:768px){.hero-sub{font-size:1rem}}
+.hero-ctas{margin-top:2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.watch-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:500;color:rgba(255,255,255,.9);transition:color .2s;font-family:'Barlow',sans-serif}
+.watch-link:hover{color:#fff}
+.hero-partners{margin-top:auto;width:100%;padding-bottom:2rem;padding-top:4rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
+.partner-pill{padding:.375rem 1rem;border-radius:9999px;font-size:.6875rem;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:.02em;font-family:'Barlow',sans-serif}
+@media(min-width:768px){.partner-pill{font-size:.75rem}}
+.partner-list{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1rem 3rem}
+.partner{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:1.5rem;color:#fff}
+@media(min-width:768px){.partner{font-size:1.875rem}}
 
-  /* ---------- 内容区 ---------- */
-  main {
-    flex: 1;
-    max-width: 880px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 56px 24px 90px;
-  }
+/* ============ VIDEO BACKGROUND SECTIONS ============ */
+.bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.9}
+.bg-video.desat{filter:saturate(0);opacity:.8}
+.fade-top,.fade-bottom{position:absolute;left:0;right:0;height:200px;pointer-events:none;z-index:1}
+.fade-top{top:0;background:linear-gradient(to bottom,#000,transparent)}
+.fade-bottom{bottom:0;background:linear-gradient(to top,#000,transparent)}
 
-  .panel { display: none; }
-  .panel.active { display: block; animation: rise 0.45s ease both; }
+/* ============ START SECTION ============ */
+.start-content{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 1.5rem;min-height:500px}
+.start-title{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;color:#fff;font-size:clamp(2.25rem,5vw,3.75rem);line-height:.9;letter-spacing:-.02em;margin-top:1.5rem;max-width:48rem}
+.start-sub{margin-top:1.5rem;max-width:36rem;color:rgba(255,255,255,.6);font-weight:300;font-size:.875rem;line-height:1.5}
+@media(min-width:768px){.start-sub{font-size:1rem}}
+.start-cta{margin-top:2.25rem}
 
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: none; }
-  }
+/* ============ CHESS ============ */
+.chess-rows{display:flex;flex-direction:column;gap:6rem}
+@media(min-width:768px){.chess-rows{gap:8rem}}
+.chess-row{display:flex;flex-direction:column;align-items:center;gap:2.5rem}
+@media(min-width:1024px){.chess-row{flex-direction:row;gap:5rem}.chess-row.reverse{flex-direction:row-reverse}}
+.chess-text{flex:1;width:100%}
+.chess-media{flex:1;width:100%}
+.chess-title{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(1.875rem,4vw,2.75rem);line-height:.95;letter-spacing:-.02em;max-width:28rem;color:#fff}
+.chess-body{margin-top:1.25rem;max-width:28rem;color:rgba(255,255,255,.6);font-weight:300;font-size:.875rem;line-height:1.6}
+@media(min-width:768px){.chess-body{font-size:1rem}}
+.chess-cta{margin-top:2rem}
+.chess-media-inner{border-radius:1rem;overflow:hidden;background:rgba(255,255,255,.03)}
+.chess-media-inner img{width:100%;height:auto;display:block}
 
-  .eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
+/* ============ FEATURES GRID ============ */
+.grid-4{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:768px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.grid-4{grid-template-columns:repeat(4,1fr)}}
+.feature-card{border-radius:1rem;padding:1.5rem;height:100%}
+.icon-circle{width:2.5rem;height:2.5rem;border-radius:9999px;display:grid;place-items:center}
+.feature-title{margin-top:1.5rem;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:1.25rem;line-height:1.1;color:#fff}
+.feature-body{margin-top:.75rem;color:rgba(255,255,255,.6);font-weight:300;font-size:.875rem;line-height:1.6}
 
-  h1 {
-    font-size: clamp(28px, 5vw, 42px);
-    line-height: 1.22;
-    letter-spacing: -0.03em;
-    margin-bottom: 20px;
-  }
+/* ============ STATS ============ */
+.stats-wrap{position:relative;z-index:10;padding:6rem 1.5rem}
+@media(min-width:768px){.stats-wrap{padding:8rem 1.5rem}}
+.stats-card{border-radius:1.5rem;padding:3rem 2rem;max-width:72rem;margin:0 auto}
+@media(min-width:768px){.stats-card{padding:4rem}}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem;text-align:center}
+@media(min-width:1024px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat-value{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(2.25rem,5vw,3.75rem);line-height:1;color:#fff}
+.stat-label{margin-top:1rem;color:rgba(255,255,255,.6);font-weight:300;font-size:.875rem}
 
-  p { color: var(--body); max-width: 62ch; margin-bottom: 14px; }
+/* ============ TESTIMONIALS ============ */
+.grid-3{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:768px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+.testimonial-card{border-radius:1rem;padding:2rem;height:100%;display:flex;flex-direction:column}
+.testimonial-quote{color:rgba(255,255,255,.8);font-weight:300;font-size:.875rem;font-style:italic;line-height:1.6}
+.testimonial-name{margin-top:2rem;color:#fff;font-weight:500;font-size:.875rem}
+.testimonial-role{margin-top:.25rem;color:rgba(255,255,255,.5);font-weight:300;font-size:.75rem}
 
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+/* ============ CTA + FOOTER ============ */
+.cta-inner{position:relative;z-index:10;padding:8rem 1.5rem 2.5rem;max-width:72rem;margin:0 auto}
+.cta-title{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(2.5rem,7vw,4.5rem);line-height:.85;letter-spacing:-.02em;text-align:center;color:#fff;max-width:48rem;margin:0 auto}
+.cta-sub{margin-top:1.75rem;max-width:36rem;margin-left:auto;margin-right:auto;text-align:center;color:rgba(255,255,255,.6);font-weight:300;font-size:.875rem;line-height:1.5}
+@media(min-width:768px){.cta-sub{font-size:1rem}}
+.cta-buttons{margin-top:2.25rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+.footer-bar{max-width:72rem;margin:8rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:center;gap:1rem}
+@media(min-width:768px){.footer-bar{flex-direction:row;justify-content:space-between}}
+.footer-copy{color:rgba(255,255,255,.4);font-size:.75rem}
+.footer-links{display:flex;gap:1.5rem}
+.footer-link{color:rgba(255,255,255,.4);font-size:.75rem;transition:color .2s}
+.footer-link:hover{color:rgba(255,255,255,.7)}
 
-  /* ---------- About ---------- */
-  .hero {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    margin-bottom: 40px;
-  }
+/* ============ ANIMATIONS (JS-enhanced only) ============ */
+.js .reveal{transition:opacity .7s ease,filter .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.js .reveal.will-reveal{opacity:0;filter:blur(10px);transform:translateY(20px)}
+.js .reveal.will-reveal.in-view{opacity:1;filter:blur(0);transform:none}
 
-  .avatar {
-    flex: 0 0 92px;
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #e6b9a6, #c9603f);
-    color: #fff;
-    font-size: 34px;
-    font-weight: 700;
-    display: grid;
-    place-items: center;
-    user-select: none;
-  }
+.js .hero-title .bw{
+  display:inline-block;opacity:0;filter:blur(10px);transform:translateY(50px);
+  transition:opacity .7s ease,filter .7s ease,transform .7s cubic-bezier(.22,1,.36,1);
+  transition-delay:calc(var(--i) * 100ms);
+}
+.js .hero-title.in-view .bw{opacity:1;filter:blur(0);transform:none}
 
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 22px;
-  }
-
-  .chip {
-    font-size: 13px;
-    color: var(--muted);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 4px 12px;
-    background: #fff;
-  }
-
-  /* ---------- Story 时间线 ---------- */
-  .timeline {
-    list-style: none;
-    border-left: 1px solid var(--line);
-    margin: 34px 0 0 6px;
-    padding-left: 28px;
-  }
-
-  .timeline li {
-    position: relative;
-    padding-bottom: 34px;
-  }
-  .timeline li:last-child { padding-bottom: 0; }
-
-  .timeline li::before {
-    content: "";
-    position: absolute;
-    left: -34px;
-    top: 9px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 2px solid var(--accent);
-  }
-
-  .time {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    font-weight: 600;
-  }
-
-  .timeline h3 {
-    font-size: 17px;
-    font-weight: 600;
-    margin: 4px 0 6px;
-    letter-spacing: -0.01em;
-  }
-
-  .timeline p { font-size: 15px; color: var(--muted); margin-bottom: 0; }
-
-  /* ---------- Project ---------- */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
-    margin-top: 32px;
-  }
-
-  .card {
-    display: block;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 22px;
-    color: inherit;
-    text-decoration: none;
-    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-  }
-
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: #d9d2c7;
-    box-shadow: 0 14px 30px -20px rgba(0, 0, 0, 0.4);
-    text-decoration: none;
-  }
-
-  .card h3 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
-  }
-
-  .card p {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 14px;
-    line-height: 1.65;
-  }
-
-  .card .tag {
-    font-size: 12px;
-    color: var(--accent);
-    letter-spacing: 0.02em;
-  }
-
-  /* ---------- Contact ---------- */
-  .links {
-    list-style: none;
-    margin-top: 28px;
-    border-top: 1px solid var(--line);
-  }
-
-  .links li { border-bottom: 1px solid var(--line); }
-
-  .links a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 4px;
-    color: var(--ink);
-    font-size: 15px;
-    transition: padding-left 0.2s, color 0.2s;
-  }
-
-  .links a:hover {
-    text-decoration: none;
-    padding-left: 10px;
-    color: var(--accent);
-  }
-
-  .links span { color: var(--muted); font-size: 14px; }
-
-  /* ---------- 页脚 ---------- */
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 22px 24px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  /* ---------- 移动端 ---------- */
-  @media (max-width: 640px) {
-    .nav {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 14px 20px 10px;
-    }
-    .tabs { width: 100%; }
-    main { padding: 36px 20px 70px; }
-    .hero { flex-direction: column; gap: 20px; }
-    .avatar { flex-basis: auto; width: 76px; height: 76px; font-size: 28px; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .panel.active { animation: none; }
-    .card, .tab, .links a { transition: none; }
-  }
+@media (prefers-reduced-motion: reduce){
+  .js .reveal.will-reveal,.js .hero-title .bw{opacity:1!important;filter:none!important;transform:none!important}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="nav">
-    <div class="logo">Yulia<span>.yan</span></div>
-    <nav class="tabs" role="tablist" aria-label="页面导航">
-      <button class="tab" role="tab" data-tab="about">About Me</button>
-      <button class="tab" role="tab" data-tab="story">Story</button>
-      <button class="tab" role="tab" data-tab="project">Project</button>
-      <button class="tab" role="tab" data-tab="contact">Contact</button>
-    </nav>
+<script>document.body.classList.add('js');</script>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo lg-strong" aria-label="Studio home">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 16.5 12 4l8 12.5" />
+        <path d="M7.5 20.5h9" />
+      </svg>
+    </a>
+
+    <div class="nav-links lg">
+      <a class="nav-link" href="#home">Home</a>
+      <a class="nav-link" href="#services">Services</a>
+      <a class="nav-link" href="#work">Work</a>
+      <a class="nav-link" href="#process">Process</a>
+      <a class="nav-link" href="#pricing">Pricing</a>
+      <a href="#pricing" class="nav-cta-desktop">
+        Get Started
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+    </div>
+
+    <div class="nav-spacer"></div>
+
+    <a href="#pricing" class="nav-cta-mobile lg-strong btn btn-glass btn-sm">
+      Get Started
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    </a>
   </div>
-</header>
+</nav>
 
-<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <video class="hero-video" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4" poster="/images/hero_bg.jpeg" autoplay loop muted playsinline preload="auto" aria-hidden="true"></video>
+  <div class="hero-overlay"></div>
+  <div class="hero-fade"></div>
 
-  <!-- ===== About Me ===== -->
-  <section class="panel" id="about" role="tabpanel">
-    <div class="hero">
-      <div class="avatar" aria-hidden="true">Y</div>
-      <div>
-        <p class="eyebrow">About Me</p>
-        <h1>你好，我是 Yulia.yan</h1>
-        <p>
-          我是一名____（职业／方向），目前在做____。我喜欢把复杂的事情
-          拆解成简单、清晰的样子，也享受从 0 到 1 把一个想法变成看得见的东西。
-        </p>
-        <p>
-          工作之外，我常常____（爱好／正在学的东西）。如果你想聊聊项目、
-          合作，或者只是想打个招呼，欢迎随时找我。
-        </p>
-        <div class="chips">
-          <span class="chip">产品设计</span>
-          <span class="chip">前端开发</span>
-          <span class="chip">数据分析</span>
-          <span class="chip">摄影</span>
+  <div class="hero-content">
+    <div class="reveal">
+      <div class="hero-badge lg">
+        <span class="new">New</span>
+        <span class="txt">Introducing AI-powered web design.</span>
+      </div>
+    </div>
+
+    <!-- 标题修改这里 -->
+    <h1 class="hero-title">
+      <span class="bw" style="--i:0">Hi,</span>
+      <span class="bw" style="--i:1">I'm</span>
+      <span class="bw" style="--i:2">Yulia!</span>
+    </h1>
+
+    <p class="hero-sub reveal">Stunning design. Blazing performance. Built by AI, refined by experts. This is web design, wildly reimagined.</p>
+
+    <div class="hero-ctas reveal">
+      <a href="#pricing" class="btn btn-glass lg-strong btn-sm">
+        Get Started
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+      <a href="#process" class="watch-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+        Watch the Film
+      </a>
+    </div>
+
+    <div class="hero-partners">
+      <div class="partner-pill lg">Trusted by the teams behind</div>
+      <div class="partner-list">
+        <span class="partner">Stripe</span>
+        <span class="partner">Vercel</span>
+        <span class="partner">Linear</span>
+        <span class="partner">Notion</span>
+        <span class="partner">Figma</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ START SECTION ============ -->
+<section class="section" id="process">
+  <video class="bg-video" data-hls="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8" autoplay loop muted playsinline preload="auto" aria-hidden="true"></video>
+  <div class="fade-top"></div>
+  <div class="fade-bottom"></div>
+
+  <div class="start-content">
+    <div class="reveal"><div class="section-badge lg">How It Works</div></div>
+    <h2 class="start-title reveal">You dream it. We ship it.</h2>
+    <p class="start-sub reveal">Share your vision. Our AI handles the rest—wireframes, design, code, launch. All in days, not quarters.</p>
+    <div class="start-cta reveal">
+      <a href="#pricing" class="btn btn-glass lg-strong">
+        Get Started
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES CHESS ============ -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="reveal"><div class="section-badge lg">Capabilities</div></div>
+      <h2 class="section-title reveal">Pro features. Zero complexity.</h2>
+    </div>
+
+    <div class="chess-rows">
+      <div class="chess-row">
+        <div class="chess-text">
+          <h3 class="chess-title reveal">Designed to convert. Built to perform.</h3>
+          <p class="chess-body reveal">Every pixel is intentional. Our AI studies what works across thousands of top sites—then builds yours to outperform them all.</p>
+          <div class="chess-cta reveal">
+            <a href="#work" class="btn btn-glass lg-strong">
+              Learn more
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="chess-media">
+          <div class="reveal">
+            <div class="chess-media-inner lg">
+              <img src="https://motionsites.ai/assets/hero-finlytic-preview-CV9g0FHP.gif" alt="Conversion-focused design preview" loading="lazy" onerror="this.style.minHeight='280px';this.style.background='rgba(255,255,255,.04)'" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chess-row reverse">
+        <div class="chess-text">
+          <h3 class="chess-title reveal">It gets smarter. Automatically.</h3>
+          <p class="chess-body reveal">Your site evolves on its own. AI monitors every click, scroll, and conversion—then optimizes in real time. No manual updates. Ever.</p>
+          <div class="chess-cta reveal">
+            <a href="#work" class="btn btn-glass lg-strong">
+              See how it works
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="chess-media">
+          <div class="reveal">
+            <div class="chess-media-inner lg">
+              <img src="https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif" alt="Self-optimizing site preview" loading="lazy" onerror="this.style.minHeight='280px';this.style.background='rgba(255,255,255,.04)'" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== Story ===== -->
-  <section class="panel" id="story" role="tabpanel">
-    <p class="eyebrow">Story</p>
-    <h1>我的故事</h1>
-    <p>一路走来的几个关键节点，构成了现在的我。</p>
-
-    <ul class="timeline">
-      <li>
-        <div class="time">2018</div>
-        <h3>起点</h3>
-        <p>第一次接触____，从此对____产生了浓厚的兴趣，开始自学相关技能。</p>
-      </li>
-      <li>
-        <div class="time">2020</div>
-        <h3>转折</h3>
-        <p>加入了____团队／完成了____项目，第一次把自己的想法真正落地。</p>
-      </li>
-      <li>
-        <div class="time">2022</div>
-        <h3>成长</h3>
-        <p>负责____，从执行者逐渐转变为能独立推动事情的人。</p>
-      </li>
-      <li>
-        <div class="time">至今</div>
-        <h3>现在</h3>
-        <p>持续在做____，也在探索____。相信长期主义，把一件事做深做透。</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ===== Project ===== -->
-  <section class="panel" id="project" role="tabpanel">
-    <p class="eyebrow">Project</p>
-    <h1>做过的项目</h1>
-    <p>一些让我学到东西的作品，点击卡片可以跳转到详情或仓库。</p>
-
-    <div class="grid">
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <h3>项目一名称</h3>
-        <p>一句话说明这个项目解决了什么问题、你负责了什么、带来了什么结果。</p>
-        <div class="tag">产品设计 · 前端</div>
-      </a>
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <h3>项目二名称</h3>
-        <p>一句话说明这个项目解决了什么问题、你负责了什么、带来了什么结果。</p>
-        <div class="tag">数据分析</div>
-      </a>
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <h3>项目三名称</h3>
-        <p>一句话说明这个项目解决了什么问题、你负责了什么、带来了什么结果。</p>
-        <div class="tag">个人作品</div>
-      </a>
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <h3>项目四名称</h3>
-        <p>一句话说明这个项目解决了什么问题、你负责了什么、带来了什么结果。</p>
-        <div class="tag">开源</div>
-      </a>
+<!-- ============ FEATURES GRID ============ -->
+<section class="section" id="work">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="reveal"><div class="section-badge lg">Why Us</div></div>
+      <h2 class="section-title reveal">The difference is everything.</h2>
     </div>
-  </section>
 
-  <!-- ===== Contact ===== -->
-  <section class="panel" id="contact" role="tabpanel">
-    <p class="eyebrow">Contact</p>
-    <h1>保持联系</h1>
-    <p>不管是合作、交流还是闲聊，我都很乐意收到你的消息。</p>
+    <div class="grid-4">
+      <div class="reveal">
+        <div class="feature-card lg">
+          <div class="icon-circle lg-strong">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3 class="feature-title">Days, Not Months</h3>
+          <p class="feature-body">Concept to launch at a pace that redefines fast. Because waiting isn't a strategy.</p>
+        </div>
+      </div>
 
-    <ul class="links">
-      <li><a href="mailto:yulia.yan@example.com">Email <span>yulia.yan@example.com</span></a></li>
-      <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub <span>@yuliayan</span></a></li>
-      <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn <span>Yulia Yan</span></a></li>
-      <li><a href="#" target="_blank" rel="noopener">小红书 / 即刻 <span>@Yulia</span></a></li>
-    </ul>
-  </section>
+      <div class="reveal">
+        <div class="feature-card lg">
+          <div class="icon-circle lg-strong">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r=".5" fill="#fff"/><circle cx="17.5" cy="10.5" r=".5" fill="#fff"/><circle cx="8.5" cy="7.5" r=".5" fill="#fff"/><circle cx="6.5" cy="12.5" r=".5" fill="#fff"/>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Obsessively Crafted</h3>
+          <p class="feature-body">Every detail considered. Every element refined. Design so precise, it feels inevitable.</p>
+        </div>
+      </div>
 
-</main>
+      <div class="reveal">
+        <div class="feature-card lg">
+          <div class="icon-circle lg-strong">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+          </div>
+          <h3 class="feature-title">Built to Convert</h3>
+          <p class="feature-body">Layouts informed by data. Decisions backed by performance. Results you can measure.</p>
+        </div>
+      </div>
 
-<footer>© <span id="year"></span> Yulia.yan</footer>
+      <div class="reveal">
+        <div class="feature-card lg">
+          <div class="icon-circle lg-strong">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <h3 class="feature-title">Secure by Default</h3>
+          <p class="feature-body">Enterprise-grade protection comes standard. SSL, DDoS mitigation, compliance. All included.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ============ STATS ============ -->
+<section class="section">
+  <video class="bg-video desat" data-hls="https://stream.mux.com/NcU3HlHeF7CUL86azTTzpy3Tlb00d6iF3BmCdFslMJYM.m3u8" autoplay loop muted playsinline preload="auto" aria-hidden="true"></video>
+  <div class="fade-top"></div>
+  <div class="fade-bottom"></div>
+
+  <div class="stats-wrap">
+    <div class="reveal">
+      <div class="stats-card lg">
+        <div class="stats-grid">
+          <div><div class="stat-value">200+</div><div class="stat-label">Sites launched</div></div>
+          <div><div class="stat-value">98%</div><div class="stat-label">Client satisfaction</div></div>
+          <div><div class="stat-value">3.2x</div><div class="stat-label">More conversions</div></div>
+          <div><div class="stat-value">5 days</div><div class="stat-label">Average delivery</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="reveal"><div class="section-badge lg">What They Say</div></div>
+      <h2 class="section-title reveal">Don't take our word for it.</h2>
+    </div>
+
+    <div class="grid-3">
+      <div class="reveal">
+        <div class="testimonial-card lg">
+          <p class="testimonial-quote">“A complete rebuild in five days. The result outperformed everything we'd spent months building before.”</p>
+          <div class="testimonial-name">Sarah Chen</div>
+          <div class="testimonial-role">CEO, Luminary</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="testimonial-card lg">
+          <p class="testimonial-quote">“Conversions up 4x. That's not a typo. The design just works differently when it's built on real data.”</p>
+          <div class="testimonial-name">Marcus Webb</div>
+          <div class="testimonial-role">Head of Growth, Arcline</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="testimonial-card lg">
+          <p class="testimonial-quote">“They didn't just design our site. They defined our brand. World-class doesn't begin to cover it.”</p>
+          <div class="testimonial-name">Elena Voss</div>
+          <div class="testimonial-role">Brand Director, Helix</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA + FOOTER ============ -->
+<section class="section" id="pricing">
+  <video class="bg-video" data-hls="https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8" autoplay loop muted playsinline preload="auto" aria-hidden="true"></video>
+  <div class="fade-top"></div>
+  <div class="fade-bottom"></div>
+
+  <div class="cta-inner">
+    <h2 class="cta-title reveal">Your next website starts here.</h2>
+    <p class="cta-sub reveal">Book a free strategy call. See what AI-powered design can do. No commitment, no pressure. Just possibilities.</p>
+    <div class="cta-buttons reveal">
+      <a href="#" class="btn btn-glass lg-strong">
+        Book a Call
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+      <a href="#pricing" class="btn btn-white">View Pricing</a>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-copy">© 2026 Studio. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+        <a href="#" class="footer-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
 <script>
-  const tabs = document.querySelectorAll('.tab');
-  const panels = document.querySelectorAll('.panel');
+(function () {
+  'use strict';
 
-  function show(id) {
-    const target = document.getElementById(id) ? id : 'about';
-    tabs.forEach(t => {
-      const on = t.dataset.tab === target;
-      t.classList.toggle('active', on);
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
+  /* ---------- 1. Reveal on scroll ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  var supportsIO = 'IntersectionObserver' in window;
+
+  if (!supportsIO) {
+    reveals.forEach(function (el) { el.classList.add('in-view'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(function (el) {
+      el.classList.add('will-reveal');
+      var rect = el.getBoundingClientRect();
+      var inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inViewport) {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () { el.classList.add('in-view'); });
+        });
+      } else {
+        io.observe(el);
+      }
     });
-    panels.forEach(p => p.classList.toggle('active', p.id === target));
-    try {
-      history.replaceState(null, '', '#' + target);
-    } catch (e) {
-      /* file:// 下可能被限制，忽略即可 */
+  }
+
+  /* ---------- 2. Hero title word stagger ---------- */
+  var heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    setTimeout(function () { heroTitle.classList.add('in-view'); }, 120);
+  }
+
+  /* ---------- 3. HLS video backgrounds ---------- */
+  function attachHls(video, src) {
+    if (!video || !src) return;
+    video.muted = true;
+
+    function tryPlay() {
+      var p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(function () {});
+    }
+
+    if (window.Hls && window.Hls.isSupported()) {
+      var hls = new window.Hls({ capLevelToPlayerSize: true, enableWorker: true });
+      hls.loadSource(src);
+      hls.attachMedia(video);
+      hls.on(window.Hls.Events.MANIFEST_PARSED, tryPlay);
+      hls.on(window.Hls.Events.ERROR, function (_e, data) {
+        if (data && data.fatal) {
+          try { hls.destroy(); } catch (e) {}
+          video.src = src;
+          tryPlay();
+        }
+      });
+    } else {
+      /* Safari 原生 HLS 或其他情况 */
+      video.src = src;
+      video.addEventListener('loadedmetadata', tryPlay, { once: true });
+      tryPlay();
     }
   }
 
-  tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.tab)));
+  document.querySelectorAll('video[data-hls]').forEach(function (v) {
+    attachHls(v, v.getAttribute('data-hls'));
+  });
 
-  // 支持地址栏 #story 直接打开对应页
-  window.addEventListener('hashchange', () => show(location.hash.slice(1)));
-  show(location.hash.slice(1) || 'about');
-
-  document.getElementById('year').textContent = new Date().getFullYear();
+  /* ---------- 4. Hero video play() catch ---------- */
+  var heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    var hp = heroVideo.play();
+    if (hp && typeof hp.catch === 'function') hp.catch(function () {});
+  }
+})();
 </script>
-
 </body>
 </html>
