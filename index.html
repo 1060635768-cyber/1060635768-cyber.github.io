@@ -189,7 +189,7 @@ h1,h2,h3,p{margin:0}
 .footer-link{color:rgba(255,255,255,.4);font-size:.75rem;transition:color .2s}
 .footer-link:hover{color:rgba(255,255,255,.7)}
 
-/* ============ ANIMATIONS (JS-enhanced only) ============ */
+/* ============ ANIMATIONS ============ */
 .js .reveal{transition:opacity .7s ease,filter .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
 .js .reveal.will-reveal{opacity:0;filter:blur(10px);transform:translateY(20px)}
 .js .reveal.will-reveal.in-view{opacity:1;filter:blur(0);transform:none}
@@ -220,12 +220,13 @@ h1,h2,h3,p{margin:0}
       </svg>
     </a>
 
+    <!-- 这里是你要求的五个导航 -->
     <div class="nav-links lg">
       <a class="nav-link" href="#home">Home</a>
-      <a class="nav-link" href="#services">Services</a>
-      <a class="nav-link" href="#work">Work</a>
-      <a class="nav-link" href="#process">Process</a>
-      <a class="nav-link" href="#pricing">Pricing</a>
+      <a class="nav-link" href="#about-me">About Me</a>
+      <a class="nav-link" href="#portfolio">Portfolio</a>
+      <a class="nav-link" href="#journal">Journal</a>
+      <a class="nav-link" href="#skills">Skills</a>
       <a href="#pricing" class="nav-cta-desktop">
         Get Started
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
@@ -255,7 +256,6 @@ h1,h2,h3,p{margin:0}
       </div>
     </div>
 
-    <!-- 标题修改这里 -->
     <h1 class="hero-title">
       <span class="bw" style="--i:0">Hi,</span>
       <span class="bw" style="--i:1">I'm</span>
@@ -269,7 +269,7 @@ h1,h2,h3,p{margin:0}
         Get Started
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
       </a>
-      <a href="#process" class="watch-link">
+      <a href="#journal" class="watch-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
         Watch the Film
       </a>
@@ -288,14 +288,14 @@ h1,h2,h3,p{margin:0}
   </div>
 </section>
 
-<!-- ============ START SECTION ============ -->
-<section class="section" id="process">
+<!-- ============ START SECTION (About Me) ============ -->
+<section class="section" id="about-me">
   <video class="bg-video" data-hls="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8" autoplay loop muted playsinline preload="auto" aria-hidden="true"></video>
   <div class="fade-top"></div>
   <div class="fade-bottom"></div>
 
   <div class="start-content">
-    <div class="reveal"><div class="section-badge lg">How It Works</div></div>
+    <div class="reveal"><div class="section-badge lg">About Me</div></div>
     <h2 class="start-title reveal">You dream it. We ship it.</h2>
     <p class="start-sub reveal">Share your vision. Our AI handles the rest—wireframes, design, code, launch. All in days, not quarters.</p>
     <div class="start-cta reveal">
@@ -307,11 +307,11 @@ h1,h2,h3,p{margin:0}
   </div>
 </section>
 
-<!-- ============ FEATURES CHESS ============ -->
-<section class="section" id="services">
+<!-- ============ FEATURES CHESS (Portfolio) ============ -->
+<section class="section" id="portfolio">
   <div class="section-inner">
     <div class="section-head">
-      <div class="reveal"><div class="section-badge lg">Capabilities</div></div>
+      <div class="reveal"><div class="section-badge lg">Portfolio</div></div>
       <h2 class="section-title reveal">Pro features. Zero complexity.</h2>
     </div>
 
@@ -321,7 +321,7 @@ h1,h2,h3,p{margin:0}
           <h3 class="chess-title reveal">Designed to convert. Built to perform.</h3>
           <p class="chess-body reveal">Every pixel is intentional. Our AI studies what works across thousands of top sites—then builds yours to outperform them all.</p>
           <div class="chess-cta reveal">
-            <a href="#work" class="btn btn-glass lg-strong">
+            <a href="#skills" class="btn btn-glass lg-strong">
               Learn more
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
@@ -341,7 +341,7 @@ h1,h2,h3,p{margin:0}
           <h3 class="chess-title reveal">It gets smarter. Automatically.</h3>
           <p class="chess-body reveal">Your site evolves on its own. AI monitors every click, scroll, and conversion—then optimizes in real time. No manual updates. Ever.</p>
           <div class="chess-cta reveal">
-            <a href="#work" class="btn btn-glass lg-strong">
+            <a href="#skills" class="btn btn-glass lg-strong">
               See how it works
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </a>
@@ -359,11 +359,11 @@ h1,h2,h3,p{margin:0}
   </div>
 </section>
 
-<!-- ============ FEATURES GRID ============ -->
-<section class="section" id="work">
+<!-- ============ FEATURES GRID (Skills) ============ -->
+<section class="section" id="skills">
   <div class="section-inner">
     <div class="section-head">
-      <div class="reveal"><div class="section-badge lg">Why Us</div></div>
+      <div class="reveal"><div class="section-badge lg">Skills</div></div>
       <h2 class="section-title reveal">The difference is everything.</h2>
     </div>
 
@@ -414,8 +414,8 @@ h1,h2,h3,p{margin:0}
   </div>
 </section>
 
-<!-- ============ STATS ============ -->
-<section class="section">
+<!-- ============ STATS (Journal) ============ -->
+<section class="section" id="journal">
   <video class="bg-video desat" data-hls="https://stream.mux.com/NcU3HlHeF7CUL86azTTzpy3Tlb00d6iF3BmCdFslMJYM.m3u8" autoplay loop muted playsinline preload="auto" aria-hidden="true"></video>
   <div class="fade-top"></div>
   <div class="fade-bottom"></div>
@@ -561,7 +561,6 @@ h1,h2,h3,p{margin:0}
         }
       });
     } else {
-      /* Safari 原生 HLS 或其他情况 */
       video.src = src;
       video.addEventListener('loadedmetadata', tryPlay, { once: true });
       tryPlay();
